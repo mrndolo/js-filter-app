@@ -17,8 +17,8 @@ const data = [
       id: 2,
       name: "Timex Men's Expedition Scout ",
       img: "./images/watch3.jpg",
-      price: 40,
-      cat: "Sport",
+      price: 165,
+      cat: "Luxury",
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const data = [
     },
     {
       id: 5,
-      name: "Garmin Venu Smartwatch ",
+      name: "Garmin Venu Sportwatch ",
       img: "./images/watch6.jpg",
       price: 20,
       cat: "Casual",
@@ -60,39 +60,39 @@ const data = [
       name: "Timex Men's Expedition Scout ",
       img: "./images/watch9.jpg",
       price: 40,
-      cat: "Sport",
+      cat: "Luxury",
     },
     {
       id: 9,
       name: "Casio Heritage",
       img: "./images/watch10.jpg",
       price: 220,
-      cat: "Luxury",
+      cat: "Casual",
     },
     {
       id: 10,
-      name: "Casio Classic Resin Strap ",
+      name: "Apple Smartwatch ",
       img: "./images/watch11.jpg",
       price: 30,
       cat: "Sport",
     },
     {
       id: 14,
-      name: "Garmin Venu Smartwatch ",
+      name: "Classic Sportwatch ",
       img: "./images/watch12.jpg",
       price: 85,
-      cat: "Casual",
+      cat: "Sport",
     },
     {
       id: 12,
-      name: "Casio Classic Resin Strap ",
+      name: "Hearty Digital Smartwatch ",
       img: "./images/watch13.jpg",
       price: 110,
       cat: "Sport",
     },
     {
       id: 13,
-      name: "Garmin Venu Smartwatch ",
+      name: "Garmin Venu Navigator ",
       img: "./images/watch14.jpg",
       price: 69,
       cat: "Casual",
@@ -120,3 +120,15 @@ const displayProducts = (filteredProducts) => {
   };
 
 displayProducts(data);
+
+searchInput.addEventListener("keyup", (e)=>{
+  // console.log(e.target.value)
+  const value = e.target.value.toLowerCase();
+  // console.log(value)
+
+  if(value){
+    displayProducts(data.filter(item=> item.name.toLowerCase().indexOf(value) !== -1))
+  }else{
+    displayProducts(data)
+  }
+})
