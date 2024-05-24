@@ -132,3 +132,36 @@ searchInput.addEventListener("keyup", (e)=>{
     displayProducts(data)
   }
 })
+
+const setCategories = ()=>{
+  const allCats = data.map(item=>item.cat)
+  // console.log(allCats.filter((item,i)=>{
+  //   return allCats.indexOf(item)===i
+  // }))
+  const categories = [
+    "All",
+    ...allCats.filter((item,i)=>{
+    return allCats.indexOf(item)===i
+  })
+];
+  // console.log(categories);
+
+  categoriesContainer.innerHTML = categories.map(cat=>
+    `
+    <span class="cat">${cat}</span>
+    `
+  ).join("");
+
+categoriesContainer.addEventListener("click",(e)=>{
+  // console.log(e.target.textContent)
+  const selectedCat = e.target.textContent;
+
+  selectedCat === "All"
+    ? displayProducts(data)
+    : displayProducts(data.filter((item) => item.cat === selectedCat))
+
+})
+
+}
+
+setCategories()
